@@ -8,12 +8,16 @@ const Harrow = require("./data/Harrow.json");
 const Heathrow = require("./data/Heathrow.json");
 const Stratford = require("./data/Stratford.json");
 
+//lEVELL 100
 app.get("/", (req, res) => {
   res.send({
-    supportedRoutes: ["/Pharmacies", "/Doctors", "/Colleges", "Hospitals"],
+    "/pharmcies": "retruns an array of pharmacies in a specific area",
+    "/Doctors": "retruns an array of Doctor in a specific area",
+    "/Colleges": "retruns an array of Colleges in a specific area",
+    "/Hospitals": "retruns an array of Hospitals in a specific area",
   });
 });
 
 app.listen(port, () => {
-  console.log(`server listen to ${port}`);
+  console.log(`running server ${port}`);
 });
