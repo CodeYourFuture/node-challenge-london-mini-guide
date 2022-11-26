@@ -2,7 +2,13 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(express.json());
+app.use(express.json()); // To parses the incoming JSON requests, and puts the parsed data in "req.body".
+
+// cities data
+const stratford = require("../data/Stratford.json");
+const harrow = require("../data/Harrow.json");
+const heathrow = require("../data/Heathrow.json");
+
 
 app.get("/", (req, res) => {
     res.send([
@@ -15,6 +21,13 @@ app.get("/", (req, res) => {
     ])
 })
 
-app.listen(port, (req, res) => {
-    console.log(`http://localhost:${port}`);
+const cities = {stratford, harrow, heathrow}; // London cities with data
+
+// route to get data with specified city and category e.g http://localhost/stratford/pharmacies
+app.get("/:city/:category", (req, res) => {
+    const city = req.params.city;
+    const category = req.params.category;
+    res.send(cities[city][category]);
 })
+
+app.listen(port, (req, res) => console.log(`http://localhost:${port}`));
