@@ -1,9 +1,10 @@
 const express = require("express");
+const cors = require("express");
 const app = express();
 const port = process.env.PORT || 3001;
 
+app.use(cors({origin: "*"}));
 app.use(express.json()); // To parses the incoming JSON requests, and puts the parsed data in "req.body".
-
 // cities data
 const stratford = require("../data/Stratford.json");
 const harrow = require("../data/Harrow.json");
@@ -31,3 +32,5 @@ app.get("/:city/:category", (req, res) => {
 })
 
 app.listen(port, (req, res) => console.log(`http://localhost:${port}`));
+
+module.exports = app;
