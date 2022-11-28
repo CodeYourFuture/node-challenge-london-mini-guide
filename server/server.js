@@ -121,10 +121,36 @@ app.get('/:city/hospitals', (req, res) => {
 })
 
 // Level 500: Make all of that in one single route as:
-app.get('/:city/:category', (req, res) => {
-   
-})
 
+app.get("/:city/:category", (req, res) => {
+    const city = req.params.city;
+    const category = req.params.category;
+    city.includes("harrow") && category.includes("pharmacies")
+      ? res.json(Harrow.pharmacies)
+      : city.includes("harrow") && category.includes("colleges")
+      ? res.json(Harrow.colleges)
+      : city.includes("harrow") && category.includes("doctors")
+      ? res.json(Harrow.doctors)
+      : city.includes("harrow") && category.includes("hospitals")
+      ? res.json(Harrow.hospitals)
+      : city.includes("heathrow") && category.includes("pharmacies")
+      ? res.json(Heathrow.pharmacies)
+      : city.includes("heathrow") && category.includes("colleges")
+      ? res.json(Heathrow.colleges)
+      : city.includes("heathrow") && category.includes("doctors")
+      ? res.json(Heathrow.doctors)
+      : city.includes("heathrow") && category.includes("hospitals")
+      ? res.json(Heathrow.hospitals)
+      : city.includes("stratford") && category.includes("pharmacies")
+      ? res.json(Stratford.pharmacies)
+      : city.includes("stratford") && category.includes("colleges")
+      ? res.json(Stratford.colleges)
+      : city.includes("stratford") && category.includes("doctors")
+      ? res.json(Stratford.doctors)
+      : city.includes("stratford") && category.includes("hospitals")
+      ? res.json(Stratford.hospitals)
+      : res.status(400).json({ msg: "City or Category not found" })
+  });
 
 
 
