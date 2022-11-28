@@ -25,12 +25,12 @@ app.get('/', (req, res) => {
         });
 })
 
-// // Level 200:  working for only one city Stratford
+// Level 200:  working for only one city Stratford
 
-// app.get('/pharmacies', () => {
-//     console.log('Returning all the Pharmacies in Stratford City');
-//     res.send(pharmacies.Stratford);
-// })
+app.get('/pharmacies', (req, res) => {
+    console.log('Returning all the Pharmacies in Stratford City');
+    res.send(Stratford.pharmacies);
+})
 
 
 
