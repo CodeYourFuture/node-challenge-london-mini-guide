@@ -32,6 +32,22 @@ app.get('/pharmacies', (req, res) => {
     res.send(Stratford.pharmacies);
 })
 
+app.get('/colleges', (req, res) => {
+    console.log('Returning all the Colleges in Stratford City');
+    res.send(Stratford.colleges);
+})
+
+app.get('/doctors', (req, res) => {
+    console.log('Returning all the Doctors in Stratford City');
+    res.send(Stratford.doctors);
+})
+
+app.get('/hospitals', (req, res) => {
+    console.log('Returning all the Hospitals in Stratford City');
+    res.send(Stratford.hospitals);
+})
+
+
 
 
 app.listen(PORT, () => {
