@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 })
 
 // Level 200:  working for only one city Stratford
-app.get('/pharmacies', (req, res) => {
+app.get('/pharmacies', (req, res) => {b 
     console.log('Returning all the Pharmacies in Stratford City');
     res.json(Stratford.pharmacies);
 })
@@ -120,45 +120,32 @@ app.get('/:city/hospitals', (req, res) => {
 
 })
 
-// Level 500: Make all of that in one single route as:
 
-app.get("/:city/:category", (req, res) => {
-    const city = req.params.city;
-    const category = req.params.category;
-    city.includes("harrow") && category.includes("pharmacies")
-      ? res.json(Harrow.pharmacies)
-      : city.includes("harrow") && category.includes("colleges")
-      ? res.json(Harrow.colleges)
-      : city.includes("harrow") && category.includes("doctors")
-      ? res.json(Harrow.doctors)
-      : city.includes("harrow") && category.includes("hospitals")
-      ? res.json(Harrow.hospitals)
-      : city.includes("heathrow") && category.includes("pharmacies")
-      ? res.json(Heathrow.pharmacies)
-      : city.includes("heathrow") && category.includes("colleges")
-      ? res.json(Heathrow.colleges)
-      : city.includes("heathrow") && category.includes("doctors")
-      ? res.json(Heathrow.doctors)
-      : city.includes("heathrow") && category.includes("hospitals")
-      ? res.json(Heathrow.hospitals)
-      : city.includes("stratford") && category.includes("pharmacies")
-      ? res.json(Stratford.pharmacies)
-      : city.includes("stratford") && category.includes("colleges")
-      ? res.json(Stratford.colleges)
-      : city.includes("stratford") && category.includes("doctors")
-      ? res.json(Stratford.doctors)
-      : city.includes("stratford") && category.includes("hospitals")
-      ? res.json(Stratford.hospitals)
-      : res.status(400).json({ msg: "City or Category not found" })
-  });
+// Level 500
+const validCategories = ['PHARMACIES', 'DOCTORS', 'COLLEGES', 'HOSPITALS'];
 
+app.get('/:city/:category', (request,response) => {
+    const city = getCity(request.params.city);
+    if (city)
+    {
+        const category = request.params.category.toUpperCase();
+        if (validCategories.includes(category))
+        {
+            response.send(city[category.toLowerCase()]);
+        }
+        else
+        {
+            response.status(404).send({Error: `Invalid Category ${category}`});
+        }
+    }
+    else {
+        response.status(404).send("City not found");
+    }
 
-
-
-
+    });
 
 
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(`Server is listening on port ${PORT}`);
 });
