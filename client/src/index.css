@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
+
+/* .App {
+  text-align: center;
+  background-color: rgb(185, 208, 227);
+
+} */
+
+body {
+  text-align: center;
+  background-color: rgb(185, 208, 227);
+  margin: 0;
+  padding: 0;
+  margin-top: -1.5rem;
+}
+
+
+
+
+h1 {
+  padding-top: 1rem;
+  font-size: 2rem;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+hr {
+  width: 100%;
+  margin: 2rem 0 2rem 0;
+  background-color: black;
+}
+
+.wrap {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5.5rem;
+  align-items: center;
+
+}
+
+.city_select {
+  height: 2rem;
+  width: 7rem;
+  font-size: 1rem;
+}
+
+
+
+.category_buttons {
+  display: flex;
+  gap: 8rem;
+
+}
+
+button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5%;
+  background-color: white;
+}
+
+table {
+  table-layout: auto;
+  width: 100%;
+  font-size: 1.2rem;
+  border: 2px solid;
+  border-collapse: collapse;
+}
+
+tbody {
+  justify-content: center;
+  align-items: center;
+}
+
+.text-center {
+  font-size: 2.5rem;
+  font-weight: 400;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+}
+
+td {
+  font-size: 1rem;
+  text-align: center;
+  max-width: 10rem;
+  word-break: break-all;
+  border: 2px solid;
+  padding: 0.5rem;
+}
