@@ -27,10 +27,11 @@ function CityCategorySelect() {
     { value: 'colleges', text: 'colleges' },
   ];
   const [category, setCategory] = useState([])
-  const handleClick = (e) => {
+  const [isActive, setIsActive] = useState(false)
+  const handleClick = (e, value) => {
+    setIsActive(value)
     console.log(e.target.value)
     const category = e.target.value;
-
     setCategory(category)
     if (city) {
       setCategory(category);
@@ -63,8 +64,12 @@ function CityCategorySelect() {
 
         <div className='category_buttons'>
           < >
-            {buttons.map(button => (
-              <button onClick={handleClick} key={button.value} value={button.value}>
+            {buttons.map((button, value) => (
+              <button
+                style={{ backgroundColor: isActive === value ? '#03B5AA' : 'white' }}
+                onClick={(e) => handleClick(e, value)}
+                key={button.value}
+                value={button.value}>
                 {button.text}
               </button>
             ))}
